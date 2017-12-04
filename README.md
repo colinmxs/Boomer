@@ -11,13 +11,13 @@ Restore adds the data from the snapshot back into the DB.
 [TestInitialize]
 public async Task Init()
 {
-    _boomer.SnapShot(_dbClient);
+    await _boomer.SnapShot(_dbClient);
 }
 
 [TestCleanup]
 public async Task Cleanup()
 {
-    _boomer.Delete(_dbClient);
-    _boomer.Restore(_dbClient);
+    await _boomer.Delete(_dbClient);
+    await _boomer.Restore(_dbClient);
 }
 ```
