@@ -20,7 +20,7 @@ namespace Boomer
             _cache = new MemoryCache(cacheOptions);
         }
 
-        public async Task Delete(AmazonDynamoDBClient client)
+        public async Task Delete(IAmazonDynamoDB client)
         {
             foreach (var tableName in Tables)
             {
@@ -38,7 +38,7 @@ namespace Boomer
             }
         }
 
-        public async Task Restore(AmazonDynamoDBClient client)
+        public async Task Restore(IAmazonDynamoDB client)
         {
             foreach (var tableName in Tables)
             {
@@ -58,7 +58,7 @@ namespace Boomer
             }
         }
 
-        public void TakeSnapshot(AmazonDynamoDBClient amazonDynamoDBClient)
+        public void TakeSnapshot(IAmazonDynamoDB amazonDynamoDBClient)
         {
             foreach (var tableName in Tables)
             {
