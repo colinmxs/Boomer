@@ -1,4 +1,6 @@
 # Boomer
+[![Build status](https://ci.appveyor.com/api/projects/status/dd2dbskq7v1hsnsd?svg=true)](https://ci.appveyor.com/project/colinmxs/boomer)
+
 A small utility that helps clean up test data in DynamoDb
 
 The Boomer API has 3 methods: Snapshot, Delete, Restore.
