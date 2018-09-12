@@ -24,8 +24,7 @@ namespace Boomer
         {
             foreach (var tableName in Tables)
             {
-                Table table = null;
-                Table.TryLoadTable(client, tableName, out table);
+                Table.TryLoadTable(client, tableName, out Table table);
                 var scan = table.Scan(new ScanFilter());
                 var data = scan.GetRemainingAsync().Result;
                 var batchDelete = table.CreateBatchWrite();
@@ -42,11 +41,9 @@ namespace Boomer
         {
             foreach (var tableName in Tables)
             {
-                Table table = null;
-                Table.TryLoadTable(client, tableName, out table);
-                var dataToRestore = _cache.Get(tableName) as List<Document>;
+                Table.TryLoadTable(client, tableName, out Table table);
                 var batchWrite = table.CreateBatchWrite();
-                if (dataToRestore != null)
+                if (_cache.Get(tableName) is List<Document> dataToRestore)
                 {
                     foreach (var item in dataToRestore)
                     {
@@ -62,8 +59,7 @@ namespace Boomer
         {
             foreach (var tableName in Tables)
             {
-                Table table = null;
-                Table.TryLoadTable(amazonDynamoDBClient, tableName, out table);
+                Table.TryLoadTable(amazonDynamoDBClient, tableName, out Table table);
                 var scan = table.Scan(new ScanFilter());
                 var data = scan.GetRemainingAsync().Result;
                 _cache.Set(tableName, data);
